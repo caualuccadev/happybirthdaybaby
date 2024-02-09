@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
+@font-face {
+    font-family: 'Signatura';
+    src:url("fonts/Signatura\ Monoline.otf");
+    src:url("fonts/Signatura\ Monoline.ttf");
+}
+
+:root{
+    --blue: #CDFADB;
+    --lightyellow: #F6FDC3;
+    --yellow_orange: #FFCF96;
+    --lightred: #FF8080;
+    }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------------------------- */
+/*  estilizando o body */
+body{
+    background: var(--blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* ------------------------- */
+/* estilizando o header */
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+h1{
+    font-family: 'Signatura', Arial, Helvetica, sans-serif;
+    font-size: clamp(2.5rem, 2rem + 2vw, 4rem);
+    width: 100%;
+    text-align: center;
+    color: #F50057;
+    position: relative;
+}
+
+header > img{
+    width: clamp(50%, 5% + 5vw, 70%);
+    animation: present_animation 8s linear infinite;
+    filter: drop-shadow(3px 3px 6px rgba(4, 54, 73, 0.2));
+}
+
+@keyframes present_animation {
+    0%, 100%{
+        transform: rotate(0);
+    }
+
+    25% { transform: rotateZ(10deg)}
+    50% { transform: rotateZ(-10deg);}
+    75% { transform: rotateZ(10deg);}
+}
+
+
+header p{
+    text-align: center;
+    color: #272727;
+    font-family: 'DM Mono', 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: minmax(1rem, calc(1rem + 1vw));
+}
+
+/* ---------------------------- */
+/* estilizando os cards de poema */
+main{
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem auto;
+    gap: 1rem;
+}
+
+.card__container{
+    height: 22rem;
+    width: 16rem;
+    position: relative;
+    box-shadow: 4px 4px 12px solid rgba(2, 73, 67, 0.699);
+    border-radius: 1rem;
+}
+
+.card__front{
+    height: 22rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 1rem;
+    transform: scale(1.02);
+    
+}
+
+.card__front img{
+    height: 22rem;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.card__front span{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    background:rgba(0, 0, 0, 0.658);
+    padding: .5rem;
+    text-align: center;
+    color: var(--yellow_orange);
+    font-family: 'DM Mono', 'Courier New', Courier, monospace;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.card__back{
+    height: 22rem;
+    width: 100%;
+    overflow-y: auto;
+    font-family: 'DM Mono', 'Courier New', Courier, monospace;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    gap: 1rem;
+    background-color: var(--lightyellow);
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    cursor: pointer;
+    border-radius: 1rem;
+    text-orientation: sideways;
+}
+
+.card__container:hover .card__front{
+    transform: rotateY(180deg);
+    transition: .5s linear;
+    z-index: -1;
+    opacity: 0;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+
+.card__container:hover .card__back{
+    transform: rotateY(180deg) scaleX(-1);
+    transition: .5s linear;
+    z-index: 0;
+    cursor: pointer;
+    border-radius: 1rem;
+
+}
+
+/* ----------------- */
+/* footer */
+
+footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+footer h2{
+    font-family: 'Signatura', cursive;
+    color: #F50057;
+    font-size: clamp(2rem,4vw + 1rem, 4rem); 
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.bi{
+    color: var(--lightred);
+    font-size: clamp(2.5rem, 2.5rem + 1vw, 3.5rem);
+    filter: drop-shadow(3px 3px 6px rgba(2, 76, 95, 0.336));
+    animation: heart_beating 2s linear infinite;
+}
+
+@keyframes heart_beating{
+    0%, 100%{transform: scale(1);}
+    50% {transform: scale(1.2);}
+}
+
